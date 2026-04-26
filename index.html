@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="theme-color" content="#17202f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="BlockVerse" />
+    <title>BlockVerse Obbycraft</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/generated/icon-192.png" />
+  </head>
+  <body>
+    <div id="desktopBlocker" class="desktop-blocker" aria-hidden="true">
+      <div class="desktop-card">
+        <p class="label">Mobile Only</p>
+        <h2>BlockVerse is unavailable on desktop</h2>
+        <p>
+          Open this game on a touch phone or tablet. Desktop and laptop play are disabled.
+        </p>
+        <div class="button-row desktop-blocker-actions">
+          <button id="playAnywayButton" type="button" class="accent-button">Play Anyway</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="rotatePrompt" class="rotate-prompt" aria-hidden="true">
+      <div class="rotate-card">
+        <p class="label">Best Played Wide</p>
+        <h2>Rotate your phone</h2>
+        <p>
+          BlockVerse is tuned for landscape play so the world, HUD, and touch controls
+          stay readable.
+        </p>
+      </div>
+    </div>
+
+    <main class="app-shell">
+      <section class="hero-panel hero-panel--feature">
+        <div class="hero-copy-stack">
+          <p class="eyebrow">Sandbox Anime Crossover Prototype</p>
+          <h1>BlockVerse Obbycraft</h1>
+          <p class="hero-copy">
+            Mine fast, build clutch shortcuts, grab every stud, and sprint
+            through a bright obstacle world packed with Straw Hat-style crew
+            cameos.
+          </p>
+          <div class="hero-actions">
+            <a class="hero-link" href="#gameCanvas">Jump Into The Run</a>
+            <p class="hero-note">Touch-friendly, installable, and built for landscape mobile play.</p>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Game highlights">
+          <article class="stat-chip">
+            <span class="stat-value">220</span>
+            <span class="stat-label">Columns of map</span>
+          </article>
+          <article class="stat-chip">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Block types to collect</span>
+          </article>
+          <article class="stat-chip">
+            <span class="stat-value">5</span>
+            <span class="stat-label">Crew encounters</span>
+          </article>
+          <article class="stat-chip">
+            <span class="stat-value">1</span>
+            <span class="stat-label">Portal finish</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="feature-band" aria-label="Core features">
+        <article class="info-card">
+          <p class="label">Build</p>
+          <h2>Turn mined blocks into shortcuts</h2>
+          <p>
+            Dirt, stone, and wood are not just resources. They are your backup
+            route whenever the obby gets mean.
+          </p>
+        </article>
+        <article class="info-card">
+          <p class="label">Collect</p>
+          <h2>Chase studs and hidden routes</h2>
+          <p>
+            Every stretch of the level rewards movement, curiosity, and a little
+            bit of risk-taking.
+          </p>
+        </article>
+        <article class="info-card">
+          <p class="label">Meet</p>
+          <h2>Find the crew across the world</h2>
+          <p>
+            Character cameos work like milestones, hints, and tiny bursts of
+            personality during the run.
+          </p>
+        </article>
+      </section>
+
+      <section class="layout">
+        <div class="stage-card">
+          <div class="mobile-launch-bar">
+            <div>
+              <p class="label">Mobile Game Mode</p>
+              <p class="launch-copy">Fullscreen, landscape, and install-ready.</p>
+            </div>
+            <div class="button-row">
+              <button id="fullscreenButton" type="button">Fullscreen</button>
+              <button id="installButton" type="button" class="accent-button" hidden>
+                Install
+              </button>
+            </div>
+          </div>
+
+          <div class="stage-header">
+            <div>
+              <p class="label">World Goal</p>
+              <h2>Collect every stud, meet the crew, and reach the portal</h2>
+              <p class="stage-intro">
+                Push forward like a speedrunner, then improvise like a builder
+                whenever the map asks for one more impossible jump.
+              </p>
+            </div>
+            <div class="button-row">
+              <button id="respawnButton" type="button">Respawn</button>
+              <button id="resetButton" type="button" class="accent-button">
+                Reset World
+              </button>
+            </div>
+          </div>
+
+          <div class="hud-strip">
+            <span id="coinLabel">Studs: 0 / 0</span>
+            <span id="crewLabel">Crew: 0 / 0</span>
+            <span id="blockLabel">Blocks: Dirt 0 | Stone 0 | Wood 0</span>
+            <span id="statusLabel">Status: Explore the map</span>
+          </div>
+
+          <div class="canvas-shell">
+            <canvas
+              id="gameCanvas"
+              width="1280"
+              height="720"
+              aria-label="Playable sandbox platformer canvas"
+            ></canvas>
+          </div>
+
+          <div id="mobileHotbar" class="mobile-hotbar" aria-label="Mobile block hotbar">
+            <button type="button" class="hotbar-slot is-selected" data-slot="dirt">
+              1 Dirt
+            </button>
+            <button type="button" class="hotbar-slot" data-slot="stone">
+              2 Stone
+            </button>
+            <button type="button" class="hotbar-slot" data-slot="wood">
+              3 Wood
+            </button>
+          </div>
+
+          <section class="mobile-controls" aria-label="Mobile touch controls">
+            <div class="touch-cluster move-cluster">
+              <button id="touchLeft" type="button" class="touch-button">Left</button>
+              <button id="touchRight" type="button" class="touch-button">Right</button>
+            </div>
+
+            <div class="touch-cluster action-cluster">
+              <button id="touchJump" type="button" class="touch-button touch-button-jump">
+                Jump
+              </button>
+              <button id="touchSprint" type="button" class="touch-button">Sprint</button>
+              <button id="touchMine" type="button" class="touch-button">Mine</button>
+              <button id="touchPlace" type="button" class="touch-button accent-button">
+                Place
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <aside class="side-panel">
+          <section class="info-card">
+            <p class="label">Run Loop</p>
+            <ol class="story-list">
+              <li>Mine nearby terrain to stock up on building blocks.</li>
+              <li>Use movement, timing, and jump pads to clear the obby route.</li>
+              <li>Meet crew cameos, collect studs, and improvise new paths.</li>
+              <li>Reach the portal with the whole run completed.</li>
+            </ol>
+          </section>
+
+          <section class="info-card">
+            <p class="label">Controls</p>
+            <ul>
+              <li><strong>Phone:</strong> Use the touch buttons below the game canvas</li>
+              <li><strong>Tap canvas:</strong> Aim a block, then mine or place nearby</li>
+              <li><strong>Move:</strong> <code>A</code> <code>D</code> or arrow keys</li>
+              <li><strong>Jump:</strong> <code>Space</code> or <code>W</code></li>
+              <li><strong>Sprint:</strong> Hold <code>Shift</code></li>
+              <li><strong>Mine:</strong> Left click nearby blocks</li>
+              <li><strong>Place:</strong> Right click with a selected block</li>
+              <li><strong>Hotbar:</strong> <code>1</code> Dirt, <code>2</code> Stone, <code>3</code> Wood</li>
+              <li><strong>Respawn:</strong> <code>R</code></li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <p class="label">Mixing the vibes</p>
+            <ul>
+              <li>Block terrain, mining, and building create the Minecraft half.</li>
+              <li>Studs, jump pads, checkpoints, and a race-to-portal goal bring the Roblox half.</li>
+              <li>One Piece crew cameos add character stops and hint bubbles throughout the run.</li>
+              <li>Use your collected blocks to bridge gaps or build shortcuts through the obby sections.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <p class="label">Crew Cameos</p>
+            <ul>
+              <li><strong>Luffy:</strong> Start area momentum</li>
+              <li><strong>Chopper:</strong> Wood and healing grove vibes</li>
+              <li><strong>Nami:</strong> Stud and checkpoint guidance</li>
+              <li><strong>Zoro:</strong> Stone-wall shortcut hint</li>
+              <li><strong>Sanji:</strong> Final platforming pep talk</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <p class="label">Player Mindset</p>
+            <ul>
+              <li>Think like a builder when a jump looks too tight.</li>
+              <li>Think like a platformer player when a shortcut looks tempting.</li>
+              <li>Reset often, experiment fast, and keep your momentum up.</li>
+            </ul>
+          </section>
+
+          <section class="info-card">
+            <p class="label">Hotbar</p>
+            <div id="hotbar" class="hotbar">
+              <button type="button" class="hotbar-slot is-selected" data-slot="dirt">
+                1 Dirt
+              </button>
+              <button type="button" class="hotbar-slot" data-slot="stone">
+                2 Stone
+              </button>
+              <button type="button" class="hotbar-slot" data-slot="wood">
+                3 Wood
+              </button>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
