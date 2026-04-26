@@ -4,7 +4,7 @@ self.addEventListener("message", (event) => {
   }
 });
 
-const CACHE_NAME = "blockverse-v3";
+const CACHE_NAME = "blockverse-v4";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -13,8 +13,6 @@ const APP_ASSETS = [
   "./manifest.webmanifest",
   "./assets/icon.svg",
   "./assets/splash.svg",
-  "./assets/generated/icon-192.png",
-  "./assets/generated/icon-512.png",
   "./privacy.html",
 ];
 
