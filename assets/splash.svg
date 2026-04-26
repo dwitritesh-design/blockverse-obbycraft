@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ad8f1" />
+      <stop offset="58%" stop-color="#d1f0fd" />
+      <stop offset="100%" stop-color="#fff2d8" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#24344f" />
+      <stop offset="100%" stop-color="#d45c34" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)" />
+  <circle cx="270" cy="180" r="90" fill="#fff4bc" opacity="0.85" />
+  <rect x="0" y="620" width="1600" height="280" fill="#7a4a28" />
+  <rect x="0" y="580" width="1600" height="56" fill="#6cae46" />
+  <rect x="470" y="160" width="660" height="240" rx="48" fill="url(#panel)" />
+  <text x="800" y="255" text-anchor="middle" fill="#fff8e7" font-family="Georgia, serif" font-size="82" font-weight="700">
+    BlockVerse
+  </text>
+  <text x="800" y="328" text-anchor="middle" fill="#ffe9c4" font-family="'Trebuchet MS', sans-serif" font-size="34">
+    Obbycraft Mobile
+  </text>
+  <rect x="710" y="430" width="180" height="210" rx="28" fill="#5d6679" />
+  <rect x="744" y="468" width="112" height="140" rx="20" fill="#1dc7c0" />
+  <circle cx="535" cy="520" r="42" fill="#ffbf3a" />
+  <circle cx="1065" cy="520" r="42" fill="#ffbf3a" />
+</svg>
