@@ -9,10 +9,17 @@ const APP_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
+  "./games.css",
   "./game.js",
+  "./racer.html",
+  "./racer.js",
+  "./skyforge.html",
+  "./skyforge.js",
   "./manifest.webmanifest",
   "./assets/icon.svg",
   "./assets/splash.svg",
+  "./assets/generated/icon-192.png",
+  "./assets/generated/icon-512.png",
   "./privacy.html",
 ];
 
@@ -47,7 +54,12 @@ self.addEventListener("fetch", (event) => {
     (requestUrl.pathname.endsWith("/") ||
       requestUrl.pathname.endsWith("/index.html") ||
       requestUrl.pathname.endsWith("/styles.css") ||
+      requestUrl.pathname.endsWith("/games.css") ||
       requestUrl.pathname.endsWith("/game.js") ||
+      requestUrl.pathname.endsWith("/racer.html") ||
+      requestUrl.pathname.endsWith("/racer.js") ||
+      requestUrl.pathname.endsWith("/skyforge.html") ||
+      requestUrl.pathname.endsWith("/skyforge.js") ||
       requestUrl.pathname.endsWith("/manifest.webmanifest"));
 
   if (isAppShellAsset) {
