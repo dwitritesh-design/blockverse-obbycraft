@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="theme-color" content="#00a7c8" />
+    <title>Turbo Block Racer</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./games.css" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="game-page game-page--racer">
+    <main class="game-shell">
+      <header class="game-topbar">
+        <div class="game-title-block">
+          <p class="label">3D Racing</p>
+          <h1>Turbo Block Racer</h1>
+          <p>Dodge traffic, ride boost strips, and push a blocky speed car through a rolling 3D highway.</p>
+        </div>
+        <nav class="game-nav" aria-label="Game navigation">
+          <a href="./index.html">BlockVerse</a>
+          <a href="./racer.html" aria-current="page">Racer</a>
+          <a href="./skyforge.html">Skyforge</a>
+        </nav>
+      </header>
+
+      <section class="game-layout">
+        <div class="game-panel">
+          <div class="game-hud" aria-label="Race status">
+            <div class="metric">
+              <span id="speedLabel" class="metric-value">0</span>
+              <span class="metric-label">Speed</span>
+            </div>
+            <div class="metric">
+              <span id="scoreLabel" class="metric-value">0</span>
+              <span class="metric-label">Score</span>
+            </div>
+            <div class="metric">
+              <span id="comboLabel" class="metric-value">x1</span>
+              <span class="metric-label">Combo</span>
+            </div>
+            <div class="metric">
+              <span id="raceStatusLabel" class="metric-value">Ready</span>
+              <span class="metric-label">Status</span>
+            </div>
+          </div>
+
+          <div class="playfield-wrap">
+            <canvas id="racerCanvas" width="1280" height="720" aria-label="Turbo Block Racer playfield"></canvas>
+            <div id="racerStart" class="game-start-card">
+              <div class="start-card-inner">
+                <h2>Hit the boost road</h2>
+                <p>Steer between cars, grab yellow boost gates, and survive as the highway gets faster.</p>
+                <button id="startRaceButton" class="game-control-button is-primary" type="button">Start Race</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="touch-controls" aria-label="Racing touch controls">
+            <button id="touchSteerLeft" type="button" class="game-control-button">Left</button>
+            <button id="touchSteerRight" type="button" class="game-control-button">Right</button>
+            <button id="touchBrake" type="button" class="game-control-button">Brake</button>
+            <button id="touchBoost" type="button" class="game-control-button is-primary">Boost</button>
+          </div>
+        </div>
+
+        <aside class="game-side-panel">
+          <p class="label">Controls</p>
+          <h2>Chase the clean line</h2>
+          <ul class="game-help-list">
+            <li>Move: <code>A</code> <code>D</code> or arrow keys</li>
+            <li>Brake: <code>S</code> or down arrow</li>
+            <li>Boost: <code>W</code>, up arrow, or space</li>
+            <li>Restart: <code>R</code></li>
+          </ul>
+          <ul class="game-help-list">
+            <li>Yellow road pads add speed and score.</li>
+            <li>Near misses build combo.</li>
+            <li>Crashes reset the run, so a clean lane matters more than top speed.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./racer.js"></script>
+  </body>
+</html>
