@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="theme-color" content="#151c34" />
+    <title>Skyforge Defender</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./games.css" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="game-page game-page--skyforge">
+    <main class="game-shell">
+      <header class="game-topbar">
+        <div class="game-title-block">
+          <p class="label">2D Arcade</p>
+          <h1>Skyforge Defender</h1>
+          <p>Guard a floating forge, catch crystal sparks, and blast meteors before they crack the core.</p>
+        </div>
+        <nav class="game-nav" aria-label="Game navigation">
+          <a href="./index.html">BlockVerse</a>
+          <a href="./racer.html">Racer</a>
+          <a href="./skyforge.html" aria-current="page">Skyforge</a>
+        </nav>
+      </header>
+
+      <section class="game-layout">
+        <div class="game-panel">
+          <div class="game-hud" aria-label="Skyforge status">
+            <div class="metric">
+              <span id="forgeScoreLabel" class="metric-value">0</span>
+              <span class="metric-label">Score</span>
+            </div>
+            <div class="metric">
+              <span id="forgeHealthLabel" class="metric-value">100</span>
+              <span class="metric-label">Core</span>
+            </div>
+            <div class="metric">
+              <span id="sparkLabel" class="metric-value">0</span>
+              <span class="metric-label">Sparks</span>
+            </div>
+            <div class="metric">
+              <span id="waveLabel" class="metric-value">1</span>
+              <span class="metric-label">Wave</span>
+            </div>
+          </div>
+
+          <div class="playfield-wrap">
+            <canvas id="forgeCanvas" width="1280" height="720" aria-label="Skyforge Defender playfield"></canvas>
+            <div id="forgeStart" class="game-start-card">
+              <div class="start-card-inner">
+                <h2>Light the forge</h2>
+                <p>Move fast, shoot clean, and collect enough sparks to overcharge the crystal cannon.</p>
+                <button id="startForgeButton" class="game-control-button is-primary" type="button">Start Defender</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="touch-controls" aria-label="Skyforge touch controls">
+            <button id="forgeTouchLeft" type="button" class="game-control-button">Left</button>
+            <button id="forgeTouchRight" type="button" class="game-control-button">Right</button>
+            <button id="forgeTouchShoot" type="button" class="game-control-button is-primary">Shoot</button>
+            <button id="forgeTouchDash" type="button" class="game-control-button">Dash</button>
+          </div>
+        </div>
+
+        <aside class="game-side-panel">
+          <p class="label">Controls</p>
+          <h2>Protect the core</h2>
+          <ul class="game-help-list">
+            <li>Move: <code>A</code> <code>D</code> or arrow keys</li>
+            <li>Shoot: <code>Space</code> or <code>W</code></li>
+            <li>Dash: <code>Shift</code></li>
+            <li>Restart: <code>R</code></li>
+          </ul>
+          <ul class="game-help-list">
+            <li>Crystal sparks repair the core and add points.</li>
+            <li>Every sixth spark fires an overcharged shot.</li>
+            <li>Waves get faster the longer the forge survives.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./skyforge.js"></script>
+  </body>
+</html>
