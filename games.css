@@ -1,0 +1,392 @@
+.game-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow-x: hidden;
+}
+
+.game-page--racer {
+  --game-accent: #00a7c8;
+  --game-accent-strong: #006c83;
+  background:
+    linear-gradient(180deg, #bfe9ff 0%, #f5f1dc 48%, #253247 100%);
+}
+
+.game-page--skyforge {
+  --game-accent: #6a8dff;
+  --game-accent-strong: #314fc2;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 209, 102, 0.35), transparent 22%),
+    radial-gradient(circle at 80% 18%, rgba(106, 141, 255, 0.32), transparent 24%),
+    linear-gradient(180deg, #151c34 0%, #26304f 48%, #f7dd9c 100%);
+  color: #fbf6e8;
+}
+
+.game-shell {
+  width: min(1320px, calc(100vw - 28px));
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 20px 0 28px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+}
+
+.game-topbar,
+.game-panel,
+.game-side-panel {
+  border: 1px solid rgba(23, 32, 47, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 248, 236, 0.9);
+  box-shadow: 0 20px 46px rgba(23, 32, 47, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.game-page--skyforge .game-topbar,
+.game-page--skyforge .game-panel,
+.game-page--skyforge .game-side-panel {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(16, 22, 42, 0.84);
+  box-shadow: 0 20px 48px rgba(5, 8, 20, 0.36);
+}
+
+.game-topbar {
+  min-height: 72px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.game-title-block {
+  min-width: 0;
+}
+
+.game-title-block h1 {
+  margin: 4px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1;
+}
+
+.game-title-block p {
+  max-width: 72ch;
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.game-page--skyforge .game-title-block p,
+.game-page--skyforge .metric-label,
+.game-page--skyforge .game-side-panel,
+.game-page--skyforge .game-help-list {
+  color: rgba(251, 246, 232, 0.78);
+}
+
+.game-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.game-nav a,
+.game-control-button {
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid rgba(23, 32, 47, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  color: inherit;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.84rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.game-nav a[aria-current="page"],
+.game-control-button.is-primary {
+  background: linear-gradient(135deg, var(--game-accent), #ffca65);
+  color: #17202f;
+}
+
+.game-page--skyforge .game-nav a,
+.game-page--skyforge .game-control-button {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.game-page--skyforge .game-nav a[aria-current="page"],
+.game-page--skyforge .game-control-button.is-primary {
+  background: linear-gradient(135deg, #ffd166, #6a8dff);
+  color: #10162a;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 16px;
+  align-items: start;
+}
+
+.game-panel {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.game-hud {
+  min-height: 54px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  border-bottom: 1px solid rgba(23, 32, 47, 0.1);
+}
+
+.game-page--skyforge .game-hud {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.metric {
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.game-page--skyforge .metric {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.metric-value {
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.metric-label {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.playfield-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #17202f;
+}
+
+.playfield-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.game-start-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(16, 22, 34, 0.44);
+  color: #fff9ec;
+}
+
+.game-start-card.is-hidden {
+  display: none;
+}
+
+.start-card-inner {
+  width: min(420px, 100%);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(23, 32, 47, 0.84);
+  text-align: center;
+}
+
+.start-card-inner h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+.start-card-inner p {
+  margin: 0 0 16px;
+  color: rgba(255, 249, 236, 0.78);
+  line-height: 1.45;
+}
+
+.touch-controls {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid rgba(23, 32, 47, 0.1);
+}
+
+.touch-controls button {
+  min-height: 56px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.game-page--skyforge .touch-controls {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.game-side-panel {
+  padding: 16px;
+}
+
+.game-side-panel h2 {
+  margin: 4px 0 10px;
+  font-size: 1.2rem;
+}
+
+.game-help-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.game-help-list + .game-help-list {
+  margin-top: 14px;
+}
+
+.game-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.game-link-card {
+  display: grid;
+  gap: 10px;
+  min-height: 170px;
+  padding: 20px;
+  border: 1px solid rgba(23, 32, 47, 0.08);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.game-link-card h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.game-link-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.game-link-card span {
+  align-self: end;
+  width: fit-content;
+  min-height: 38px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.84rem;
+}
+
+.game-link-card--racer {
+  background:
+    linear-gradient(135deg, rgba(0, 167, 200, 0.88), rgba(255, 196, 91, 0.86)),
+    #dff7ff;
+}
+
+.game-link-card--skyforge {
+  background:
+    linear-gradient(135deg, rgba(37, 48, 90, 0.92), rgba(255, 202, 101, 0.72)),
+    #26304f;
+  color: #fff9ec;
+}
+
+.game-link-card--skyforge p {
+  color: rgba(255, 249, 236, 0.78);
+}
+
+@media (max-width: 920px) {
+  .game-topbar,
+  .game-layout {
+    display: block;
+  }
+
+  .game-nav {
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  .game-side-panel {
+    margin-top: 16px;
+  }
+
+  .game-hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .touch-controls {
+    display: grid;
+  }
+
+  .game-link-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .game-shell {
+    width: 100vw;
+    padding: 0;
+    gap: 0;
+  }
+
+  .game-topbar,
+  .game-panel,
+  .game-side-panel {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .game-title-block p,
+  .game-side-panel {
+    font-size: 0.92rem;
+  }
+
+  .game-nav a,
+  .game-control-button {
+    flex: 1;
+    text-align: center;
+  }
+
+  .game-hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 8px;
+  }
+
+  .metric {
+    padding: 7px 8px;
+  }
+
+  .playfield-wrap {
+    aspect-ratio: auto;
+    height: min(62svh, 520px);
+  }
+
+  .game-side-panel {
+    margin-top: 0;
+  }
+}
